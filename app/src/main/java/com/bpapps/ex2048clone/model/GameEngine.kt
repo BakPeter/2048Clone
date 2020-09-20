@@ -39,11 +39,14 @@ class GameEngine(
                 }
             }
 
+            val value = if (Random.nextBoolean()) 2 else 4
+            var ind = 0
             if (emptySquaresCoordinates.size > 1) {
-                val ind = Random.nextInt(0, emptySquaresCoordinates.size - 1)
-                val value = if (Random.nextBoolean()) 2 else 4
-                squares[emptySquaresCoordinates[ind].row][emptySquaresCoordinates[ind].col] = value
+                ind = Random.nextInt(0, emptySquaresCoordinates.size - 1)
+            }
 
+            if (emptySquaresCoordinates.size > 0) {
+                squares[emptySquaresCoordinates[ind].row][emptySquaresCoordinates[ind].col] = value
                 addedRandomSquareCallback?.onSquareAdded(emptySquaresCoordinates[ind], value)
             }
         }

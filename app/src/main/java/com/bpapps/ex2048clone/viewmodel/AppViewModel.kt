@@ -62,7 +62,7 @@ class AppViewModel : ViewModel(), GameEngine.IOnGameScoreUpdates, GameEngine.IOn
     }
 
     override fun onSquareAdded(coordinate: Coordinate, value: Int) {
-        randomAddedCallback?.onAdded(coordinate, value)
+        randomAddedCallback?.onRandomAdded(coordinate, value)
     }
 
     override fun onBestScoreUpdated(newBestScore: Int) {
@@ -118,7 +118,7 @@ class AppViewModel : ViewModel(), GameEngine.IOnGameScoreUpdates, GameEngine.IOn
     }
 
     interface IOnRandomAddedListener {
-        fun onAdded(coordinate: Coordinate, valueToSet: Int)
+        fun onRandomAdded(coordinate: Coordinate, valueToSet: Int)
     }
 
     interface IOnGameStartedListener {

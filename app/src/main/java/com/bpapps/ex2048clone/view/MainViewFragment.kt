@@ -1,5 +1,6 @@
 package com.bpapps.ex2048clone.view
 
+import android.animation.ObjectAnimator
 import android.annotation.SuppressLint
 import android.content.Context
 import android.os.Bundle
@@ -29,11 +30,12 @@ class MainViewFragment : Fragment(), View.OnTouchListener, AppViewModel.IOnGameS
     private val viewModel by viewModels<AppViewModel>()
 
     private lateinit var squares: Array<Array<AppCompatTextView>>
+    private lateinit var movableSquare: AppCompatTextView
     private lateinit var btnNewGame: AppCompatButton
     private lateinit var tvScore: AppCompatTextView
     private lateinit var tvBestScore: AppCompatTextView
 
-    private lateinit var bord: FrameLayout
+    private lateinit var board: FrameLayout
     private var x1: Float = 0F
     private var x2: Float = 0F
     private var y1: Float = 0F
@@ -60,8 +62,8 @@ class MainViewFragment : Fragment(), View.OnTouchListener, AppViewModel.IOnGameS
             viewModel.startGame(this)
         }
 
-        bord = view.findViewById(R.id.flBoardContainer)
-        bord.setOnTouchListener(this)
+        board = view.findViewById(R.id.flBoardContainer)
+        board.setOnTouchListener(this)
 
         tvBestScore = view.findViewById(R.id.tvBestScore)
         onBestScoreUpdated(viewModel.bestScore)
@@ -69,6 +71,7 @@ class MainViewFragment : Fragment(), View.OnTouchListener, AppViewModel.IOnGameS
         tvScore = view.findViewById(R.id.tvScore)
 
         initSquares(view)
+        movableSquare = view.findViewById(R.id.movableSquare)
 
         viewModel.startGame(this)
     }
@@ -149,11 +152,16 @@ class MainViewFragment : Fragment(), View.OnTouchListener, AppViewModel.IOnGameS
             32 -> square.setBackgroundColor(resources.getColor(R.color._32Back, null))
             64 -> square.setBackgroundColor(resources.getColor(R.color._64Back, null))
             128 -> square.setBackgroundColor(resources.getColor(R.color._128Back, null))
-            258 -> square.setBackgroundColor(resources.getColor(R.color._256Back, null))
+            256 -> square.setBackgroundColor(resources.getColor(R.color._256Back, null))
             512 -> square.setBackgroundColor(resources.getColor(R.color._512Back, null))
             1024 -> square.setBackgroundColor(resources.getColor(R.color._1024Back, null))
             2048 -> square.setBackgroundColor(resources.getColor(R.color._2048Back, null))
-            else -> square.setBackgroundColor(resources.getColor(R.color.empty_square_background))
+            else -> square.setBackgroundColor(
+                resources.getColor(
+                    R.color.empty_square_background,
+                    null
+                )
+            )
         }
     }
 
@@ -184,6 +192,7 @@ class MainViewFragment : Fragment(), View.OnTouchListener, AppViewModel.IOnGameS
                             viewModel.swipeUp(object : AppViewModel.IOnSwipeUpListener {
                                 override fun onSwipeUp(movements: ArrayList<SquareMovement>) {
                                     onStarted(viewModel.gameEngine.boardStatus)
+                                    animateMoves(movements)
                                 }
                             })
                         } else {
@@ -191,6 +200,7 @@ class MainViewFragment : Fragment(), View.OnTouchListener, AppViewModel.IOnGameS
                             viewModel.swipeDown(object : AppViewModel.IOnSwipeDownListener {
                                 override fun onSwipeDown(movements: ArrayList<SquareMovement>) {
                                     onStarted(viewModel.gameEngine.boardStatus)
+                                    animateMoves(movements)
                                 }
                             })
                         }
@@ -201,6 +211,7 @@ class MainViewFragment : Fragment(), View.OnTouchListener, AppViewModel.IOnGameS
                             viewModel.swipeLeft(object : AppViewModel.IOnSwipeLeftListener {
                                 override fun onSwipeLeft(movements: ArrayList<SquareMovement>) {
                                     onStarted(viewModel.gameEngine.boardStatus)
+                                    animateMoves(movements)
                                 }
                             })
                         } else {
@@ -208,6 +219,7 @@ class MainViewFragment : Fragment(), View.OnTouchListener, AppViewModel.IOnGameS
                             viewModel.swipeRight(object : AppViewModel.IOnSwipeRightListener {
                                 override fun onSwipeRight(movements: ArrayList<SquareMovement>) {
                                     onStarted(viewModel.gameEngine.boardStatus)
+                                    animateMoves(movements)
                                 }
                             })
                         }
@@ -222,6 +234,51 @@ class MainViewFragment : Fragment(), View.OnTouchListener, AppViewModel.IOnGameS
         }
 
         return retVal
+    }
+
+    private fun animateMoves(movements: java.util.ArrayList<SquareMovement>) {
+        board.isEnabled = false
+
+        movements.forEach { move ->
+            val fromSquare = squares[move.from.row][move.from.col]
+            val toSquare = squares[move.to.row][move.to.col]
+
+            movableSquare.x = fromSquare.x
+            movableSquare.y = fromSquare.y
+
+            ObjectAnimator.ofFloat(movableSquare, "translationY", toSquare.y).apply {
+                duration = 2000
+                start()
+            }
+
+//            val ta =
+//                TranslateAnimation(fromSquare.x, toSquare.x, fromSquare.y, toSquare.y).also { ta ->
+//                    ta.duration = 2000
+//                    ta.setAnimationListener(object :
+//                        Animation.AnimationListener {
+//                        override fun onAnimationRepeat(animation: Animation?) {
+//                            TODO("Not yet implemented")
+//                        }
+//
+//                        override fun onAnimationEnd(animation: Animation?) {
+//                            Log.d(TAG, "onAnimation end")
+////                            movableSquare.visibility = View.GONE
+//                        }
+//
+//                        override fun onAnimationStart(animation: Animation?) {
+//                            Log.d(TAG, "onAnimationStart")
+//                            movableSquare.x = fromSquare.x
+//                            movableSquare.y = fromSquare.y
+////                            setSquare(movableSquare, move.valueAtStart)
+//                            movableSquare.visibility = View.VISIBLE
+//                        }
+//                    })
+//                }
+//
+//            movableSquare.startAnimation(ta)
+        }
+
+        board.isEnabled = true
     }
 
     companion object {
@@ -240,8 +297,8 @@ class MainViewFragment : Fragment(), View.OnTouchListener, AppViewModel.IOnGameS
         tvBestScore.text = bestScore.toString()
     }
 
-    override fun onAdded(coordinate: Coordinate, valueToSet: Int) {
-        squares[coordinate.row][coordinate.col].text = valueToSet.toString()
+    override fun onRandomAdded(coordinate: Coordinate, valueToSet: Int) {
+        setSquare(squares[coordinate.row][coordinate.col], valueToSet)
     }
 
     override fun onGameOver() {
