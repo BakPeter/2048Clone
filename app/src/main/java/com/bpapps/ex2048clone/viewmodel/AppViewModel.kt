@@ -6,7 +6,7 @@ import com.bpapps.ex2048clone.model.GameEngine
 import com.bpapps.ex2048clone.model.SquareMovement
 
 class AppViewModel : ViewModel(), GameEngine.IOnGameScoreUpdates, GameEngine.IOnRandomSquareAdded,
-    GameEngine.IOnBestScoreUpdated {
+    GameEngine.IOnBestScoreUpdated, GameEngine.IOnMoveFinishedListener {
 
     lateinit var gameEngine: GameEngine
 
@@ -14,6 +14,7 @@ class AppViewModel : ViewModel(), GameEngine.IOnGameScoreUpdates, GameEngine.IOn
     private var bestScoreUpdateCallBack: IOnBestScoreUpdatedListener? = null
     private var randomAddedCallback: IOnRandomAddedListener? = null
     private var gameOverCallback: IOnGameOverListener? = null
+    private var moveFinishedCallback: IOnMoveFinishedListener? = null
 
     var bestScore: Int = 0
 
@@ -53,10 +54,11 @@ class AppViewModel : ViewModel(), GameEngine.IOnGameScoreUpdates, GameEngine.IOn
     }
 
     private fun gameOverCheck() {
-        if(gameEngine.isGameFinished){
+        if (gameEngine.isGameFinished) {
             gameOverCallback?.onGameOver()
         }
     }
+
     override fun onScoreUpdated(newScore: Int) {
         scoreUpdateCallBack?.onScoreUpdated(newScore)
     }
@@ -68,6 +70,10 @@ class AppViewModel : ViewModel(), GameEngine.IOnGameScoreUpdates, GameEngine.IOn
     override fun onBestScoreUpdated(newBestScore: Int) {
         bestScore = newBestScore
         bestScoreUpdateCallBack?.onBestScoreUpdated(newBestScore)
+    }
+
+    override fun onMoveFinished(move: SquareMovement) {
+        moveFinishedCallback?.onMoveFinished(move)
     }
 
     fun registerForScoreUpdateCallback(callBack: IOnScoreUpdatedListener) {
@@ -101,6 +107,15 @@ class AppViewModel : ViewModel(), GameEngine.IOnGameScoreUpdates, GameEngine.IOn
     fun unRegisterForGameOverCallback() {
         gameOverCallback = null
     }
+
+    fun registerForMoveFinishedCallback(callBack: IOnMoveFinishedListener) {
+        moveFinishedCallback = callBack
+    }
+
+    fun unRegisterForMoveFinishedCallback() {
+        moveFinishedCallback = null
+    }
+
     interface IOnSwipeUpListener {
         fun onSwipeUp(movements: ArrayList<SquareMovement>)
     }
@@ -136,4 +151,10 @@ class AppViewModel : ViewModel(), GameEngine.IOnGameScoreUpdates, GameEngine.IOn
     interface IOnGameOverListener {
         fun onGameOver()
     }
+
+    interface IOnMoveFinishedListener {
+        fun onMoveFinished(move: SquareMovement)
+    }
+
+
 }

@@ -1,0 +1,303 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/transparent">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvAnimSquare"
+        android:layout_width="@dimen/square_dimensions"
+        android:layout_height="@dimen/square_dimensions"
+        android:layout_marginStart="@dimen/squareMargins"
+        android:layout_marginTop="@dimen/squareMargins"
+        android:alpha="0.5"
+        android:background="#8E24AA"
+        android:gravity="start"
+        android:textColor="#A32424"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:visibility="gone"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+<!--    <androidx.appcompat.widget.AppCompatTextView-->
+<!--        android:id="@+id/tvAnimSquare20"-->
+<!--        android:layout_width="@dimen/square_dimensions"-->
+<!--        android:layout_height="@dimen/square_dimensions"-->
+<!--        android:layout_marginStart="@dimen/squareMargins"-->
+<!--        android:layout_marginTop="@dimen/squareMargins"-->
+<!--        android:alpha="0.5"-->
+<!--        android:background="#8E24AA"-->
+<!--        android:gravity="start"-->
+<!--        android:textColor="#A32424"-->
+<!--        android:textSize="24sp"-->
+<!--        android:textStyle="bold"-->
+<!--        android:visibility="gone"-->
+<!--        app:layout_constraintBottom_toTopOf="@+id/tvAnimSquare30"-->
+<!--        app:layout_constraintEnd_toStartOf="@+id/tvAnimSquare21"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/tvAnimSquare10" />-->
+
+<!--    <androidx.appcompat.widget.AppCompatTextView-->
+<!--        android:id="@+id/tvAnimSquare30"-->
+<!--        android:layout_width="@dimen/square_dimensions"-->
+<!--        android:layout_height="@dimen/square_dimensions"-->
+<!--        android:layout_marginStart="@dimen/squareMargins"-->
+<!--        android:layout_marginTop="@dimen/squareMargins"-->
+<!--        android:layout_marginBottom="@dimen/squareMargins"-->
+<!--        android:alpha="0.5"-->
+<!--        android:background="#8E24AA"-->
+<!--        android:gravity="start"-->
+<!--        android:textColor="#A32424"-->
+<!--        android:textSize="24sp"-->
+<!--        android:textStyle="bold"-->
+<!--        android:visibility="gone"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toStartOf="@+id/tvAnimSquare31"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/tvAnimSquare20" />-->
+
+<!--    <androidx.appcompat.widget.AppCompatTextView-->
+<!--        android:id="@+id/tvAnimSquare01"-->
+<!--        android:layout_width="@dimen/square_dimensions"-->
+<!--        android:layout_height="@dimen/square_dimensions"-->
+<!--        android:layout_marginStart="@dimen/squareMargins"-->
+<!--        android:layout_marginTop="@dimen/squareMargins"-->
+<!--        android:alpha="0.5"-->
+<!--        android:background="#8E24AA"-->
+<!--        android:gravity="start"-->
+<!--        android:textColor="#A32424"-->
+<!--        android:textSize="24sp"-->
+<!--        android:textStyle="bold"-->
+<!--        android:visibility="gone"-->
+<!--        app:layout_constraintBottom_toTopOf="@+id/tvAnimSquare11"-->
+<!--        app:layout_constraintEnd_toStartOf="@+id/tvAnimSquare02"-->
+<!--        app:layout_constraintStart_toEndOf="@+id/tvAnimSquare00"-->
+<!--        app:layout_constraintTop_toTopOf="parent" />-->
+
+<!--    <androidx.appcompat.widget.AppCompatTextView-->
+<!--        android:id="@+id/tvAnimSquare11"-->
+<!--        android:layout_width="@dimen/square_dimensions"-->
+<!--        android:layout_height="@dimen/square_dimensions"-->
+<!--        android:layout_marginStart="@dimen/squareMargins"-->
+<!--        android:layout_marginTop="@dimen/squareMargins"-->
+<!--        android:alpha="0.5"-->
+<!--        android:background="#8E24AA"-->
+<!--        android:gravity="start"-->
+<!--        android:textColor="#A32424"-->
+<!--        android:textSize="24sp"-->
+<!--        android:textStyle="bold"-->
+<!--        android:visibility="gone"-->
+<!--        app:layout_constraintBottom_toTopOf="@+id/tvAnimSquare21"-->
+<!--        app:layout_constraintEnd_toStartOf="@+id/tvAnimSquare12"-->
+<!--        app:layout_constraintStart_toEndOf="@+id/tvAnimSquare10"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/tvAnimSquare01" />-->
+
+<!--    <androidx.appcompat.widget.AppCompatTextView-->
+<!--        android:id="@+id/tvAnimSquare21"-->
+<!--        android:layout_width="@dimen/square_dimensions"-->
+<!--        android:layout_height="@dimen/square_dimensions"-->
+<!--        android:layout_marginStart="@dimen/squareMargins"-->
+<!--        android:layout_marginTop="@dimen/squareMargins"-->
+<!--        android:alpha="0.5"-->
+<!--        android:background="#8E24AA"-->
+<!--        android:gravity="start"-->
+<!--        android:textColor="#A32424"-->
+<!--        android:textSize="24sp"-->
+<!--        android:textStyle="bold"-->
+<!--        android:visibility="gone"-->
+<!--        app:layout_constraintBottom_toTopOf="@+id/tvAnimSquare31"-->
+<!--        app:layout_constraintEnd_toStartOf="@+id/tvAnimSquare22"-->
+<!--        app:layout_constraintStart_toEndOf="@+id/tvAnimSquare20"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/tvAnimSquare11" />-->
+
+<!--    <androidx.appcompat.widget.AppCompatTextView-->
+<!--        android:id="@+id/tvAnimSquare31"-->
+<!--        android:layout_width="@dimen/square_dimensions"-->
+<!--        android:layout_height="@dimen/square_dimensions"-->
+<!--        android:layout_marginStart="@dimen/squareMargins"-->
+<!--        android:layout_marginTop="@dimen/squareMargins"-->
+<!--        android:layout_marginBottom="@dimen/squareMargins"-->
+<!--        android:alpha="0.5"-->
+<!--        android:background="#8E24AA"-->
+<!--        android:gravity="start"-->
+<!--        android:textColor="#A32424"-->
+<!--        android:textSize="24sp"-->
+<!--        android:textStyle="bold"-->
+<!--        android:visibility="gone"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toStartOf="@+id/tvAnimSquare32"-->
+<!--        app:layout_constraintStart_toEndOf="@+id/tvAnimSquare30"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/tvAnimSquare21" />-->
+
+<!--    <androidx.appcompat.widget.AppCompatTextView-->
+<!--        android:id="@+id/tvAnimSquare02"-->
+<!--        android:layout_width="@dimen/square_dimensions"-->
+<!--        android:layout_height="@dimen/square_dimensions"-->
+<!--        android:layout_marginStart="@dimen/squareMargins"-->
+<!--        android:layout_marginTop="@dimen/squareMargins"-->
+<!--        android:alpha="0.5"-->
+<!--        android:background="#8E24AA"-->
+<!--        android:gravity="start"-->
+<!--        android:textColor="#A32424"-->
+<!--        android:textSize="24sp"-->
+<!--        android:textStyle="bold"-->
+<!--        android:visibility="gone"-->
+<!--        app:layout_constraintBottom_toTopOf="@+id/tvAnimSquare12"-->
+<!--        app:layout_constraintEnd_toStartOf="@+id/tvAnimSquare03"-->
+<!--        app:layout_constraintStart_toEndOf="@+id/tvAnimSquare01"-->
+<!--        app:layout_constraintTop_toTopOf="parent" />-->
+
+<!--    <androidx.appcompat.widget.AppCompatTextView-->
+<!--        android:id="@+id/tvAnimSquare12"-->
+<!--        android:layout_width="@dimen/square_dimensions"-->
+<!--        android:layout_height="@dimen/square_dimensions"-->
+<!--        android:layout_marginStart="@dimen/squareMargins"-->
+<!--        android:layout_marginTop="@dimen/squareMargins"-->
+<!--        android:alpha="0.5"-->
+<!--        android:background="#8E24AA"-->
+<!--        android:gravity="start"-->
+<!--        android:textColor="#A32424"-->
+<!--        android:textSize="24sp"-->
+<!--        android:textStyle="bold"-->
+<!--        android:visibility="gone"-->
+<!--        app:layout_constraintBottom_toTopOf="@+id/tvAnimSquare22"-->
+<!--        app:layout_constraintEnd_toStartOf="@+id/tvAnimSquare13"-->
+<!--        app:layout_constraintStart_toEndOf="@+id/tvAnimSquare11"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/tvAnimSquare02" />-->
+
+<!--    <androidx.appcompat.widget.AppCompatTextView-->
+<!--        android:id="@+id/tvAnimSquare22"-->
+<!--        android:layout_width="@dimen/square_dimensions"-->
+<!--        android:layout_height="@dimen/square_dimensions"-->
+<!--        android:layout_marginStart="@dimen/squareMargins"-->
+<!--        android:layout_marginTop="@dimen/squareMargins"-->
+<!--        android:alpha="0.5"-->
+<!--        android:background="#8E24AA"-->
+<!--        android:gravity="start"-->
+<!--        android:textColor="#A32424"-->
+<!--        android:textSize="24sp"-->
+<!--        android:textStyle="bold"-->
+<!--        android:visibility="gone"-->
+<!--        app:layout_constraintBottom_toTopOf="@+id/tvAnimSquare32"-->
+<!--        app:layout_constraintEnd_toStartOf="@+id/tvAnimSquare23"-->
+<!--        app:layout_constraintStart_toEndOf="@+id/tvAnimSquare21"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/tvAnimSquare12" />-->
+
+<!--    <androidx.appcompat.widget.AppCompatTextView-->
+<!--        android:id="@+id/tvAnimSquare32"-->
+<!--        android:layout_width="@dimen/square_dimensions"-->
+<!--        android:layout_height="@dimen/square_dimensions"-->
+<!--        android:layout_marginStart="@dimen/squareMargins"-->
+<!--        android:layout_marginTop="@dimen/squareMargins"-->
+<!--        android:layout_marginBottom="@dimen/squareMargins"-->
+<!--        android:alpha="0.5"-->
+<!--        android:background="#8E24AA"-->
+<!--        android:gravity="start"-->
+<!--        android:textColor="#A32424"-->
+<!--        android:textSize="24sp"-->
+<!--        android:textStyle="bold"-->
+<!--        android:visibility="gone"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toStartOf="@+id/tvAnimSquare33"-->
+<!--        app:layout_constraintStart_toEndOf="@+id/tvAnimSquare31"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/tvAnimSquare22" />-->
+
+<!--    <androidx.appcompat.widget.AppCompatTextView-->
+<!--        android:id="@+id/tvAnimSquare03"-->
+<!--        android:layout_width="@dimen/square_dimensions"-->
+<!--        android:layout_height="@dimen/square_dimensions"-->
+<!--        android:layout_marginStart="@dimen/squareMargins"-->
+<!--        android:layout_marginTop="@dimen/squareMargins"-->
+<!--        android:layout_marginEnd="@dimen/squareMargins"-->
+<!--        android:alpha="0.5"-->
+<!--        android:background="#8E24AA"-->
+<!--        android:gravity="start"-->
+<!--        android:textColor="#A32424"-->
+<!--        android:textSize="24sp"-->
+<!--        android:textStyle="bold"-->
+<!--        android:visibility="gone"-->
+<!--        app:layout_constraintBottom_toTopOf="@+id/tvAnimSquare13"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toEndOf="@+id/tvAnimSquare02"-->
+<!--        app:layout_constraintTop_toTopOf="parent" />-->
+
+<!--    <androidx.appcompat.widget.AppCompatTextView-->
+<!--        android:id="@+id/tvAnimSquare13"-->
+<!--        android:layout_width="@dimen/square_dimensions"-->
+<!--        android:layout_height="@dimen/square_dimensions"-->
+<!--        android:layout_marginStart="@dimen/squareMargins"-->
+<!--        android:layout_marginTop="@dimen/squareMargins"-->
+<!--        android:layout_marginEnd="@dimen/squareMargins"-->
+<!--        android:alpha="0.5"-->
+<!--        android:background="#8E24AA"-->
+<!--        android:gravity="start"-->
+<!--        android:textColor="#A32424"-->
+<!--        android:textSize="24sp"-->
+<!--        android:textStyle="bold"-->
+<!--        android:visibility="gone"-->
+<!--        app:layout_constraintBottom_toTopOf="@+id/tvAnimSquare23"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toEndOf="@+id/tvAnimSquare12"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/tvAnimSquare03" />-->
+
+<!--    <androidx.appcompat.widget.AppCompatTextView-->
+<!--        android:id="@+id/tvAnimSquare23"-->
+<!--        android:layout_width="@dimen/square_dimensions"-->
+<!--        android:layout_height="@dimen/square_dimensions"-->
+<!--        android:layout_marginStart="@dimen/squareMargins"-->
+<!--        android:layout_marginTop="@dimen/squareMargins"-->
+<!--        android:layout_marginEnd="@dimen/squareMargins"-->
+<!--        android:alpha="0.5"-->
+<!--        android:background="#8E24AA"-->
+<!--        android:gravity="start"-->
+<!--        android:textColor="#A32424"-->
+<!--        android:textSize="24sp"-->
+<!--        android:textStyle="bold"-->
+<!--        android:visibility="gone"-->
+<!--        app:layout_constraintBottom_toTopOf="@+id/tvAnimSquare33"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toEndOf="@+id/tvAnimSquare22"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/tvAnimSquare13" />-->
+
+<!--    <androidx.appcompat.widget.AppCompatTextView-->
+<!--        android:id="@+id/tvAnimSquare33"-->
+<!--        android:layout_width="@dimen/square_dimensions"-->
+<!--        android:layout_height="@dimen/square_dimensions"-->
+<!--        android:layout_marginStart="@dimen/squareMargins"-->
+<!--        android:layout_marginTop="@dimen/squareMargins"-->
+<!--        android:layout_marginEnd="@dimen/squareMargins"-->
+<!--        android:layout_marginBottom="@dimen/squareMargins"-->
+<!--        android:alpha="0.5"-->
+<!--        android:background="#8E24AA"-->
+<!--        android:gravity="start"-->
+<!--        android:textColor="#A32424"-->
+<!--        android:textSize="24sp"-->
+<!--        android:textStyle="bold"-->
+<!--        android:visibility="gone"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toEndOf="@+id/tvAnimSquare32"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/tvAnimSquare23" />-->
+
+<!--    <androidx.appcompat.widget.AppCompatTextView-->
+<!--        android:id="@+id/tvAnimSquare10"-->
+<!--        android:layout_width="@dimen/square_dimensions"-->
+<!--        android:layout_height="@dimen/square_dimensions"-->
+<!--        android:layout_marginStart="@dimen/squareMargins"-->
+<!--        android:layout_marginTop="@dimen/squareMargins"-->
+<!--        android:alpha="0.5"-->
+<!--        android:background="#8E24AA"-->
+<!--        android:gravity="start"-->
+<!--        android:textColor="#A32424"-->
+<!--        android:textSize="24sp"-->
+<!--        android:textStyle="bold"-->
+<!--        android:visibility="gone"-->
+<!--        app:layout_constraintBottom_toTopOf="@+id/tvAnimSquare20"-->
+<!--        app:layout_constraintEnd_toStartOf="@+id/tvAnimSquare11"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/tvAnimSquare00" />-->
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

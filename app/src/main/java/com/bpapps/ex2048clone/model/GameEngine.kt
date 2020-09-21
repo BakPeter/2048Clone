@@ -8,6 +8,7 @@ class GameEngine(
     private var bestScoreUpdatedCallback: IOnBestScoreUpdated?,
     private var scoreUpdatedCallback: IOnGameScoreUpdates?,
     private var addedRandomSquareCallback: IOnRandomSquareAdded?
+//    private var moveFinishedListener: IOnMoveFinishedListener?
 ) {
     private val dimens = Configurations.BOARD_DIMENSIONS
 
@@ -72,6 +73,15 @@ class GameEngine(
 
                             updateScore(squares[row][col])
 
+//                            moveFinishedListener?.onMoveFinished(
+//                                SquareMovement(
+//                                    Coordinate(row + 1, col),
+//                                    Coordinate(row, col),
+//                                    squares[row][col],
+//                                    true
+//                                )
+//                            )
+//
                             retVal.add(
                                 SquareMovement(
                                     Coordinate(row + 1, col),
@@ -92,6 +102,15 @@ class GameEngine(
                         //move square up
                         squares[row][col] = squares[row + 1][col]
                         squares[row + 1][col] = EMPTY_SQUARE
+
+//                        moveFinishedListener?.onMoveFinished(
+//                            SquareMovement(
+//                                Coordinate(row + 1, col),
+//                                Coordinate(row, col),
+//                                squares[row][col],
+//                                false
+//                            )
+//                        )
 
                         retVal.add(
                             SquareMovement(
@@ -221,7 +240,7 @@ class GameEngine(
 
                         retVal.add(
                             SquareMovement(
-                                Coordinate(row - 1, col),
+                                Coordinate(row, col - 1),
                                 Coordinate(row, col),
                                 squares[row][col],
                                 true
@@ -236,8 +255,8 @@ class GameEngine(
 
                         retVal.add(
                             SquareMovement(
-                                Coordinate(row - 1, col),
                                 Coordinate(row, col),
+                                Coordinate(row, col - 1),
                                 squares[row][col],
                                 false
                             )
@@ -287,8 +306,8 @@ class GameEngine(
 
                         retVal.add(
                             SquareMovement(
-                                Coordinate(row + 1, col),
                                 Coordinate(row, col),
+                                Coordinate(row, col + 1),
                                 squares[row][col],
                                 true
                             )
@@ -302,8 +321,8 @@ class GameEngine(
 
                         retVal.add(
                             SquareMovement(
-                                Coordinate(row + 1, col),
                                 Coordinate(row, col),
+                                Coordinate(row, col + 1),
                                 squares[row][col],
                                 false
                             )
@@ -380,5 +399,9 @@ class GameEngine(
 
     interface IOnBestScoreUpdated {
         fun onBestScoreUpdated(newBestScore: Int)
+    }
+
+    interface IOnMoveFinishedListener {
+        fun onMoveFinished(move: SquareMovement)
     }
 }
