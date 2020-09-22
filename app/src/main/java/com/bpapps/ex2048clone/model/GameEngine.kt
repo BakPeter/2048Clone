@@ -1,14 +1,12 @@
 package com.bpapps.ex2048clone.model
 
-import kotlin.random.Random
-
 
 class GameEngine(
     private var bestScore: Int,
     private var bestScoreUpdatedCallback: IOnBestScoreUpdated?,
     private var scoreUpdatedCallback: IOnGameScoreUpdates?,
-    private var addedRandomSquareCallback: IOnRandomSquareAdded?
-//    private var moveFinishedListener: IOnMoveFinishedListener?
+    private var addedRandomSquareCallback: IOnRandomSquareAdded?,
+    private var moveFinishedListener: IOnMoveFinishedListener?
 ) {
     private val dimens = Configurations.BOARD_DIMENSIONS
 
@@ -40,16 +38,25 @@ class GameEngine(
                 }
             }
 
-            val value = if (Random.nextBoolean()) 2 else 4
-            var ind = 0
-            if (emptySquaresCoordinates.size > 1) {
-                ind = Random.nextInt(0, emptySquaresCoordinates.size - 1)
-            }
+
 
             if (emptySquaresCoordinates.size > 0) {
-                squares[emptySquaresCoordinates[ind].row][emptySquaresCoordinates[ind].col] = value
-                addedRandomSquareCallback?.onSquareAdded(emptySquaresCoordinates[ind], value)
+                val value = arrayListOf(2, 4).random()
+                val coordinate = emptySquaresCoordinates.random()
+                squares[coordinate.row][coordinate.col] = value
+                addedRandomSquareCallback?.onSquareAdded(coordinate, value)
             }
+
+//            val value = if (Random.nextBoolean()) 2 else 4
+//            var ind = 0
+//            if (emptySquaresCoordinates.size > 1) {
+//                ind = Random.nextInt(0, emptySquaresCoordinates.size - 1)
+//            }
+//
+//            if (emptySquaresCoordinates.size > 0) {
+//                squares[emptySquaresCoordinates[ind].row][emptySquaresCoordinates[ind].col] = value
+//                addedRandomSquareCallback?.onSquareAdded(emptySquaresCoordinates[ind], value)
+//            }
         }
     }
 
@@ -73,23 +80,25 @@ class GameEngine(
 
                             updateScore(squares[row][col])
 
-//                            moveFinishedListener?.onMoveFinished(
-//                                SquareMovement(
-//                                    Coordinate(row + 1, col),
-//                                    Coordinate(row, col),
-//                                    squares[row][col],
-//                                    true
-//                                )
-//                            )
-//
-                            retVal.add(
+                            moveFinishedListener?.onMoveFinished(
                                 SquareMovement(
+                                    MoveOrientation.VERTICAL_MOVE,
                                     Coordinate(row + 1, col),
                                     Coordinate(row, col),
                                     squares[row][col],
                                     true
                                 )
                             )
+//
+//                            retVal.add(
+//                                SquareMovement(
+//                                    MoveOrientation.VERTICAL_MOVE,
+//                                    Coordinate(row + 1, col),
+//                                    Coordinate(row, col),
+//                                    squares[row][col],
+//                                    true
+//                                )
+//                            )
                         }
                         //move index down
                         row++
@@ -103,23 +112,25 @@ class GameEngine(
                         squares[row][col] = squares[row + 1][col]
                         squares[row + 1][col] = EMPTY_SQUARE
 
-//                        moveFinishedListener?.onMoveFinished(
-//                            SquareMovement(
-//                                Coordinate(row + 1, col),
-//                                Coordinate(row, col),
-//                                squares[row][col],
-//                                false
-//                            )
-//                        )
-
-                        retVal.add(
+                        moveFinishedListener?.onMoveFinished(
                             SquareMovement(
+                                MoveOrientation.VERTICAL_MOVE,
                                 Coordinate(row + 1, col),
                                 Coordinate(row, col),
                                 squares[row][col],
                                 false
                             )
                         )
+
+//                        retVal.add(
+//                            SquareMovement(
+//                                MoveOrientation.VERTICAL_MOVE,
+//                                Coordinate(row + 1, col),
+//                                Coordinate(row, col),
+//                                squares[row][col],
+//                                false
+//                            )
+//                        )
 
                         //move index up unless it is at the beginning then move down
                         if (row > 0) {
@@ -165,14 +176,25 @@ class GameEngine(
 
                             updateScore(squares[row][col])
 
-                            retVal.add(
+                            moveFinishedListener?.onMoveFinished(
                                 SquareMovement(
+                                    MoveOrientation.VERTICAL_MOVE,
                                     Coordinate(row - 1, col),
                                     Coordinate(row, col),
                                     squares[row][col],
                                     true
                                 )
                             )
+
+//                            retVal.add(
+//                                SquareMovement(
+//                                    MoveOrientation.VERTICAL_MOVE,
+//                                    Coordinate(row - 1, col),
+//                                    Coordinate(row, col),
+//                                    squares[row][col],
+//                                    true
+//                                )
+//                            )
                         }
                         //move index up
                         row--
@@ -186,14 +208,25 @@ class GameEngine(
                         squares[row][col] = squares[row - 1][col]
                         squares[row - 1][col] = EMPTY_SQUARE
 
-                        retVal.add(
+                        moveFinishedListener?.onMoveFinished(
                             SquareMovement(
+                                MoveOrientation.VERTICAL_MOVE,
                                 Coordinate(row - 1, col),
                                 Coordinate(row, col),
                                 squares[row][col],
                                 false
                             )
                         )
+
+//                        retVal.add(
+//                            SquareMovement(
+//                                MoveOrientation.VERTICAL_MOVE,
+//                                Coordinate(row - 1, col),
+//                                Coordinate(row, col),
+//                                squares[row][col],
+//                                false
+//                            )
+//                        )
 
                         //move index down unless it is at the end then move up
                         if (row < dimens - 1) {
@@ -238,8 +271,9 @@ class GameEngine(
 
                         updateScore(squares[row][col])
 
-                        retVal.add(
+                        moveFinishedListener?.onMoveFinished(
                             SquareMovement(
+                                MoveOrientation.HORIZONTAL_MOVE,
                                 Coordinate(row, col - 1),
                                 Coordinate(row, col),
                                 squares[row][col],
@@ -247,20 +281,41 @@ class GameEngine(
                             )
                         )
 
+//                        retVal.add(
+//                            SquareMovement(
+//                                MoveOrientation.HORIZONTAL_MOVE,
+//                                Coordinate(row, col - 1),
+//                                Coordinate(row, col),
+//                                squares[row][col],
+//                                true
+//                            )
+//                        )
+
                         col--
                     } else {
                         //squares[row][col] == EMPTY_SQUARE
                         squares[row][col] = squares[row][col - 1]
                         squares[row][col - 1] = EMPTY_SQUARE
 
-                        retVal.add(
+                        moveFinishedListener?.onMoveFinished(
                             SquareMovement(
+                                MoveOrientation.HORIZONTAL_MOVE,
                                 Coordinate(row, col),
                                 Coordinate(row, col - 1),
                                 squares[row][col],
                                 false
                             )
                         )
+
+//                        retVal.add(
+//                            SquareMovement(
+//                                MoveOrientation.HORIZONTAL_MOVE,
+//                                Coordinate(row, col),
+//                                Coordinate(row, col - 1),
+//                                squares[row][col],
+//                                false
+//                            )
+//                        )
 
                         if (col < dimens - 1) {
                             col++
@@ -304,8 +359,9 @@ class GameEngine(
 
                         updateScore(squares[row][col])
 
-                        retVal.add(
+                        moveFinishedListener?.onMoveFinished(
                             SquareMovement(
+                                MoveOrientation.HORIZONTAL_MOVE,
                                 Coordinate(row, col),
                                 Coordinate(row, col + 1),
                                 squares[row][col],
@@ -313,20 +369,41 @@ class GameEngine(
                             )
                         )
 
+//                        retVal.add(
+//                            SquareMovement(
+//                                MoveOrientation.HORIZONTAL_MOVE,
+//                                Coordinate(row, col),
+//                                Coordinate(row, col + 1),
+//                                squares[row][col],
+//                                true
+//                            )
+//                        )
+
                         col++
                     } else {
                         //squares[row][col] == EMPTY_SQUARE
                         squares[row][col] = squares[row][col + 1]
                         squares[row][col + 1] = EMPTY_SQUARE
 
-                        retVal.add(
+                        moveFinishedListener?.onMoveFinished(
                             SquareMovement(
+                                MoveOrientation.HORIZONTAL_MOVE,
                                 Coordinate(row, col),
                                 Coordinate(row, col + 1),
                                 squares[row][col],
                                 false
                             )
                         )
+
+//                        retVal.add(
+//                            SquareMovement(
+//                                MoveOrientation.HORIZONTAL_MOVE,
+//                                Coordinate(row, col),
+//                                Coordinate(row, col + 1),
+//                                squares[row][col],
+//                                false
+//                            )
+//                        )
 
                         if (col > 0) {
                             col--

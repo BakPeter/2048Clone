@@ -35,9 +35,22 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/flScoreContainer">
 
+
         <include layout="@layout/board" />
 
-        <include layout="@layout/anim_layer" />
+
+<!--        <FrameLayout-->
+<!--            android:layout_width="@dimen/square_dimensions"-->
+<!--            android:layout_height="@dimen/square_dimensions">-->
+
+<!--            <androidx.appcompat.widget.AppCompatTextView-->
+<!--                android:id="@+id/tvAnimSquare"-->
+<!--                android:layout_width="@dimen/square_dimensions"-->
+<!--                android:layout_height="@dimen/square_dimensions"-->
+<!--                android:layout_margin="@dimen/squareMargins" />-->
+<!--        </FrameLayout>-->
+
+        <!--        <include layout="@layout/anim_layer" />-->
 
     </com.bpapps.ex2048clone.view.MyFrameLayout>
 

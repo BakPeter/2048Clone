@@ -5,21 +5,21 @@
     android:layout_height="match_parent"
     android:background="@android:color/transparent">
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tvAnimSquare"
-        android:layout_width="@dimen/square_dimensions"
-        android:layout_height="@dimen/square_dimensions"
-        android:layout_marginStart="@dimen/squareMargins"
-        android:layout_marginTop="@dimen/squareMargins"
-        android:alpha="0.5"
-        android:background="#8E24AA"
-        android:gravity="start"
-        android:textColor="#A32424"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        android:visibility="gone"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+<!--    <androidx.appcompat.widget.AppCompatTextView-->
+<!--        android:id="@+id/tvAnimSquare"-->
+<!--        android:layout_width="@dimen/square_dimensions"-->
+<!--        android:layout_height="@dimen/square_dimensions"-->
+<!--        android:layout_marginStart="@dimen/squareMargins"-->
+<!--        android:layout_marginTop="@dimen/squareMargins"-->
+<!--        android:alpha="0.5"-->
+<!--        android:background="#8E24AA"-->
+<!--        android:gravity="start"-->
+<!--        android:textColor="#A32424"-->
+<!--        android:textSize="24sp"-->
+<!--        android:textStyle="bold"-->
+<!--        android:visibility="gone"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent" />-->
 
 <!--    <androidx.appcompat.widget.AppCompatTextView-->
 <!--        android:id="@+id/tvAnimSquare20"-->

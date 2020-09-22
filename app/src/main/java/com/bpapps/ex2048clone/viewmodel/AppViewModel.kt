@@ -19,7 +19,7 @@ class AppViewModel : ViewModel(), GameEngine.IOnGameScoreUpdates, GameEngine.IOn
     var bestScore: Int = 0
 
     fun startGame(callBack: IOnGameStartedListener?) {
-        gameEngine = GameEngine(bestScore, this, this, this)
+        gameEngine = GameEngine(bestScore, this, this, this, this)
         callBack?.onStarted(gameEngine.boardStatus)
         onScoreUpdated(0)
         onBestScoreUpdated(bestScore)
